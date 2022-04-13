@@ -1,6 +1,28 @@
 header {
-    padding: 0;
-    margin: 0;
     background-color: rgb(225, 177, 135);
     height: 3em;
+    text-align: center;
+    border: 3px solid black;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-link {
+    background-color: aquamarine;
+    padding: 1em;
+    margin: 3em;
+    width: 10em;
+    height: 3em;
+    border-radius: 0em, 0em, 1em, 0em;
+    text-decoration: none;
+    font-family: consolas;
+}
+
+.nav-link:hover {
+    background-color: rgb(101, 101, 144);
+}
+
+#router-div {
+    margin: auto;
+    padding: auto;
 }

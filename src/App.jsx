@@ -8,26 +8,29 @@ import './App.css'
 
 function App() {
 
-  const [team,setTeam] = useState([])
+  const [team, setTeam] = useState([])
 
   return (
     <Router>
       <div>
         <header>
-          <NavLink to=""> Home </NavLink>
-          <NavLink to="/pokedex"> Pokédex </NavLink>
-          <NavLink to="/team"> Team </NavLink>
+          <NavLink className={'nav-link'} to=""> Home </NavLink>
+
+
+          <NavLink className={'nav-link'} to="/pokedex"> Pokédex </NavLink>
+
+
+          <NavLink className={'nav-link'} to="/team"> Team </NavLink>
+
         </header>
         <main>
           <Routes>
-            <Route path='/team' element={<Team team = {team} setTeam = {setTeam}/>} />
-            <Route path='/pokedex' element ={<Pokedex  team = {team} setTeam = {setTeam}/>}/>
-            <Route path='' element={<Home/>} />
+            <Route path='/team' element={<Team team={team} setTeam={setTeam} />} />
+            <Route path='/pokedex' element={<Pokedex team={team} setTeam={setTeam} />} />
+            <Route path='' element={<Home />} />
           </Routes>
         </main>
       </div>
-
-
     </Router>
   )
 }
