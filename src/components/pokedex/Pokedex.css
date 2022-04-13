@@ -1,20 +1,29 @@
-@import url('https://fonts.googleapis.com/css2?family=DotGothic16&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+.name {
+    text-transform: uppercase;
+}
+
 #page {
     display: grid;
-    grid-template-areas: "pokemon list" "info  list" "foot  foot";
-    grid-template-rows: 18em 1fr 2em;
-    grid-template-columns: 1fr 1.5fr;
+    grid-template-areas: "pokemon search-bar" "pokemon list" "info list" "foot  foot";
+    grid-template-rows: 2em 16em 1fr 2em;
+    grid-template-columns: 1fr 2fr;
+    height: calc(100vh - 3em);
+}
+
+#page>* {
+    font-family: 'Press Start 2P', cursive;
 }
 
 #page>#pokemon {
     grid-area: pokemon;
-    background-color: #8ca0ff;
+    background: repeating-linear-gradient(180deg, #e9e9fb, #303537 65%, #465c63 66%, #e9e9fb 100%);
+    box-shadow: inset 1em 4em 7em 5em #2326279a;
     position: relative;
 }
 
-.name {
+#info-name {
     position: relative;
-    font-family: 'DotGothic16', sans-serif;
     background-color: #8cffa0;
     height: 3em;
 }
@@ -26,9 +35,42 @@
 
 #page>#list {
     grid-area: list;
-    background-color: #ffff64;
-    height: 30em;
     overflow-y: scroll;
+    position: relative;
+    background: repeating-linear-gradient(180deg, #4c4c61, #b3b497 10em, #f3f7dc 20em, #4c4c61);
+    box-shadow: inset 1em 0em 0.3em -0.5em #161718dc;
+}
+
+#page>#search-bar {
+    height: 2em;
+    position: relative;
+    background: repeating-linear-gradient(47deg, #4c4c61, #b3b497 10em, #f3f7dc 20em, #4c4c61);
+    box-shadow: 0em 1em 1em -0.6em #08090a;
+}
+
+#search-bar>p {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    margin-top: -0.5em;
+    top: 50%;
+    right: 15.5em;
+}
+
+#search-bar>input {
+    font-family: 'Press Start 2P', cursive;
+    color: white;
+    background-color: #6e8688;
+    position: absolute;
+    right: 3em;
+    margin: 0.2em;
+    text-align: center;
+    padding: 0.2em;
+    border: 0.2em inset rgb(174, 189, 193);
+    border-radius: 10em;
+    height: 1.2em;
+    width: 14em;
+    box-shadow: inset 0.6em 0.6em 0.9em 0.6em #27282b;
 }
 
 ul {
@@ -40,24 +82,34 @@ ul {
 }
 
 li {
+    background-color: #6e86886e;
     position: relative;
-    font-family: 'DotGothic16', sans-serif;
-    margin: 1em;
+    margin: 1em 0.5em;
     padding: 0.2em;
-    border: 1px solid black;
+    border: 0.2em inset rgb(174, 189, 193, 0.5);
     border-radius: 10em;
-    height: 4em;
+    height: 5em;
 }
 
-li>img {
-    width: 3em;
+#box-shadow {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    border-radius: 10em;
+    box-shadow: inset 0.6em 0.6em 0.9em 0.6em #27282b;
 }
 
-#pokemon-icon {
-    width: 5em;
-    margin-top: -2.5em;
-    top: 50%;
-    right: 10%;
+li:hover {
+    background-color: #97bbbf6e;
+    border: 0.2em outset rgba(174, 189, 193, 0.5);
+    cursor: pointer;
+    box-shadow: 0.6em 0.6em 0.3em 0.3em #27282b;
+}
+
+li:hover #box-shadow {
+    display: none;
 }
 
 li>* {
@@ -65,6 +117,44 @@ li>* {
     padding: 0;
     position: absolute;
     display: inline;
+}
+
+#pokeball {
+    width: 5em;
+}
+
+#li-name {
+    font-size: 0.8em;
+    height: 3em;
+    margin-top: -0.4em;
+    top: 60%;
+    left: 30%;
+}
+
+#id {
+    font-size: 0.8em;
+    height: 3em;
+    margin-top: -0.4em;
+    top: 40%;
+    left: 30%;
+}
+
+#icon {
+    width: 5em;
+    margin-top: -2.5em;
+    top: 50%;
+    right: 2%;
+    filter: drop-shadow(0.1em 0.1em 0.3em rgb(17, 19, 31));
+}
+
+#shadow {
+    background: radial-gradient(#27282b, #9198e500);
+    filter: blur(0.1em);
+    width: 3em;
+    height: 0.7em;
+    border-radius: 50%;
+    top: 70%;
+    right: 7%;
 }
 
 #page>footer {
@@ -82,6 +172,7 @@ li>* {
     margin-left: -5em;
     width: 10em;
     left: 50%;
+    filter: drop-shadow(0.5em 0.5em 2em rgb(207, 211, 228));
 }
 
 .shadow {
@@ -90,5 +181,12 @@ li>* {
     margin-left: -6em;
     width: 14em;
     left: 50%;
-    top: 65%;
+    top: 75%;
+}
+
+.shadow::after {
+    content: "";
+    background-color: #27282b;
+    height: 1em;
+    width: 2em;
 }
