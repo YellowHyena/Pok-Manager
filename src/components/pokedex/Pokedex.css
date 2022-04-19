@@ -5,10 +5,10 @@
 
 #page {
     display: grid;
-    grid-template-areas: "pokemon search-bar" "pokemon list" "info list" "foot  foot";
-    grid-template-rows: 2em 16em 1fr 2em;
+    grid-template-areas: "pokemon search-bar" "pokemon list" "info list";
+    grid-template-rows: 2em 16em 1fr;
     grid-template-columns: 1fr 2fr;
-    height: calc(100vh - 3em);
+    height: 93vh;
 }
 
 #page>* {
@@ -51,36 +51,21 @@
     box-shadow: 0em 1em 1em -0.6em #08090a;
 }
 
-
-/* 
-#search-bar>p {
+.team-btn {
+    font-family: 'Press Start 2P', cursive;
+    background-color: #c4dadc;
     position: absolute;
-    margin: 0;
-    padding: 0;
-    margin-top: -0.5em;
-    top: 50%;
-    right: 15.5em;
+    border: 0.2em inset rgba(255, 255, 255, 0.823);
+    border-radius: 10em;
+    height: 2em;
+    bottom: 0.2em;
+    right: 0.2em;
 }
 
-#search-bar>input {
-    font-family: 'Press Start 2P', cursive;
-    color: white;
-    background-color: #6e8688;
-    position: absolute;
-    right: 3em;
-    margin: 0.2em;
-    text-align: center;
-    padding: 0.2em;
-    border: 0.2em inset rgb(174, 189, 193);
-    border-radius: 10em;
-    height: 1.2em;
-    width: 14em;
-    box-shadow: inset 0.6em 0.6em 0.9em 0.6em #27282b;
-} */
-
-#page>footer {
-    grid-area: foot;
-    background-color: #8cffa0;
+.team-btn:hover {
+    cursor: pointer;
+    background-color: #ffffff;
+    box-shadow: 0 0 0.2em 0.2em #ffffff;
 }
 
 .image,

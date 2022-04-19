@@ -4,9 +4,7 @@ import './Pokedex.css'
 import Pokeball from '../images/Pokeball.svg'
 import SearchBar from './SearchBar';
 
-const Pokedex = (team, setTeam) => {
-	const [pokemons, setPokemons] = useState([])
-	const context = { pokemons }
+const Pokedex = ({ team, setTeam, pokemons, setPokemons }) => {
 	const [selected, setSelected] = useState()
 	const [keyword, setKeyword] = useState('')
 	const [pokemonInfo, setPokemonInfo] = useState()
@@ -34,13 +32,14 @@ const Pokedex = (team, setTeam) => {
 		}
 		else getPokemonInfo()
 	})
+
 	const getPokemonInfo = () => {
 		const foundPokemon = PokemonInfoCache.find((pokemon => pokemon.id === selected))
 		foundPokemon ? console.log('found', foundPokemon.name) : console.log('could not find pokemon');
 		setPokemonInfo(foundPokemon)
 	}
 
-	useEffect(getPokemons, [])
+	useEffect(() => { if (pokemons.length == 0) getPokemons() }, [])
 
 	useEffect(() => {
 		if (selected) checkNFetch()
@@ -50,30 +49,40 @@ const Pokedex = (team, setTeam) => {
 		if (PokemonInfoCache.length > 0) getPokemonInfo() + setLoading('')
 	}, [PokemonInfoCache])
 
+	const toggleTeamMember = () => {
+		if (team.filter(member => member === selected).length==0 && team.length < 6) {
+			let newTeam = [...team]
+			newTeam.push(selected)
+			setTeam(newTeam)
+			console.log('added to team');
+		}
+		else if (!team.filter(member => member === selected).length==0){
+			let newTeam = team.filter(member => member !== selected)
+			setTeam(newTeam)
+			console.log('removed from team');
+		}
+		else console.log('team is full', team.length);
 
+	}
 	return (
-		// <PokemonsContext.Provider value={context}>
-			<section id="page">
-				<div id='pokemon'>
-					{<p id='info-name' className='name'>Name: {pokemonInfo ? pokemonInfo.name : ''} <br /> Number: {pokemonInfo ? pokemonInfo.id : ''}</p>}
+		<section id="page">
+			<div id='pokemon'>
+				{<p id='info-name' className='name'>Name: {pokemonInfo ? pokemonInfo.name : ''} <br /> Number: {pokemonInfo ? pokemonInfo.id : ''}</p>}
+				<img className={'shadow' + loading} src={pokemonInfo ? `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokemonInfo.id}.png` : Pokeball} alt="pokemon" />
+				<img className={'image' + loading} src={pokemonInfo ? `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokemonInfo.id}.png` : Pokeball} alt="pokemonShadow" />
+				<button className='team-btn' onClick={toggleTeamMember} > {team.filter(member => member === selected).length ===0 ? 'ADD TO TEAM' : 'REMOVE FROM TEAM'}</button>
+			</div>
 
-					<img className={'shadow' + loading} src={pokemonInfo ? `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokemonInfo.id}.png` : Pokeball} alt="pokemon" />
-					<img className={'image' + loading} src={pokemonInfo ? `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokemonInfo.id}.png` : Pokeball} alt="pokemonShadow" />
+			<div id='info'>info</div>
 
-				</div>
+			<div id='list'>
+				<PokemonList team={team} selected={selected} setSelected={setSelected} pokemons={pokemons} keyword={keyword} />
+			</div>
 
-				<div id='info'>info</div>
-
-				<div id='list'>
-					<PokemonList team={team} setTeam={setTeam} selected={selected} setSelected={setSelected} pokemons={pokemons} keyword={keyword}/>
-				</div>
-
-				<div id="search-bar">
-					<SearchBar setKeyword={setKeyword}/>
-				</div>
-				<footer>Footer</footer>
-			</section>
-		// </PokemonsContext.Provider>
+			<div id="search-bar">
+				<SearchBar setKeyword={setKeyword} />
+			</div>
+		</section>
 	);
 }
 export default Pokedex;
