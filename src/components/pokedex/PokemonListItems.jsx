@@ -2,11 +2,11 @@ import { useContext } from 'react'
 import PokemonsContext from '../contexts/pokemonsContext'
 import { idOf, styledIdOf, iconOf } from '../Helper'
 import Pokeball from '../images/Pokeball.svg'
-import './Pokedex.css'
 import './pokedexStyling/PokemonList.css'
 
 const PokemonListItems = ({ selected, setSelected }) => {
 	const { pokemons } = useContext(PokemonsContext)
+
 
 	return (
 		pokemons.map((pokemon) =>
@@ -18,7 +18,8 @@ const PokemonListItems = ({ selected, setSelected }) => {
 				<img id='item-icon' src={iconOf(pokemon)} alt="icon" />
 				<div id='li-shadow'></div>
 			</li>
-		));
+		)
+	);
 }
 
 export default PokemonListItems;

@@ -15,6 +15,14 @@
     font-family: 'Press Start 2P', cursive;
 }
 
+#list {
+    grid-area: list;
+    overflow-y: scroll;
+    position: relative;
+    background: repeating-linear-gradient(180deg, #4c4c61, #b3b497 10em, #f3f7dc 20em, #4c4c61);
+    box-shadow: inset 1em 0em 0.3em -0.5em #161718dc;
+}
+
 #page>#pokemon {
     grid-area: pokemon;
     background: repeating-linear-gradient(180deg, #e9e9fb, #303537 65%, #465c63 66%, #e9e9fb 100%);
@@ -23,9 +31,11 @@
 }
 
 #info-name {
+    height: 7em;
     position: relative;
-    background-color: #8cffa0;
-    height: 3em;
+    top: 0.5em;
+    left: 0;
+    margin: 1em;
 }
 
 #page>#info {
@@ -34,12 +44,15 @@
 }
 
 #page>#search-bar {
+    grid-area: search-bar;
     height: 2em;
     position: relative;
     background: repeating-linear-gradient(47deg, #4c4c61, #b3b497 10em, #f3f7dc 20em, #4c4c61);
     box-shadow: 0em 1em 1em -0.6em #08090a;
 }
 
+
+/* 
 #search-bar>p {
     position: absolute;
     margin: 0;
@@ -63,7 +76,7 @@
     height: 1.2em;
     width: 14em;
     box-shadow: inset 0.6em 0.6em 0.9em 0.6em #27282b;
-}
+} */
 
 #page>footer {
     grid-area: foot;
