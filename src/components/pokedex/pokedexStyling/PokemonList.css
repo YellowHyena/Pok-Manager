@@ -1,0 +1,91 @@
+#page>#list {
+    grid-area: list;
+    overflow-y: scroll;
+    position: relative;
+    background: repeating-linear-gradient(180deg, #4c4c61, #b3b497 10em, #f3f7dc 20em, #4c4c61);
+    box-shadow: inset 1em 0em 0.3em -0.5em #161718dc;
+}
+
+ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+li {
+    background-color: #6e86886e;
+    position: relative;
+    margin: 1em 0.5em;
+    padding: 0.2em;
+    border: 0.2em inset rgb(174, 189, 193, 0.5);
+    border-radius: 10em;
+    height: 5em;
+}
+
+li:hover {
+    background-color: #97bbbf6e;
+    border: 0.2em outset rgba(174, 189, 193, 0.5);
+    cursor: pointer;
+    box-shadow: 0.6em 0.6em 0.3em 0.3em #27282b;
+}
+
+#li-shadow {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    border-radius: 10em;
+    box-shadow: inset 0.6em 0.6em 0.9em 0.6em #27282b;
+}
+
+li:hover #li-shadow {
+    display: none;
+}
+
+li>* {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    display: inline;
+}
+
+#pokeball {
+    width: 5em;
+}
+
+#item-name {
+    font-size: 0.8em;
+    height: 3em;
+    margin-top: -0.4em;
+    top: 60%;
+    left: 30%;
+}
+
+#item-id {
+    font-size: 0.8em;
+    height: 3em;
+    margin-top: -0.4em;
+    top: 40%;
+    left: 30%;
+}
+
+#item-icon {
+    width: 5em;
+    margin-top: -2.5em;
+    top: 50%;
+    right: 2%;
+    filter: drop-shadow(0.1em 0.1em 0.3em rgb(17, 19, 31));
+}
+
+#item-shadow {
+    background: radial-gradient(#27282b, #9198e500);
+    filter: blur(0.1em);
+    width: 3em;
+    height: 0.7em;
+    border-radius: 50%;
+    top: 70%;
+    right: 7%;
+}

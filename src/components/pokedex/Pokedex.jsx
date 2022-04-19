@@ -9,7 +9,7 @@ const Pokedex = (team, setTeam) => {
 	const context = { pokemons }
 	const [selected, setSelected] = useState()
 	const [pokemonInfo, setPokemonInfo] = useState()
-	const [fetchedPokemons, setFetchedPokemons] = useState([])
+	const [PokemonsCache, setPokemonsCache] = useState([])
 	const [loading, setLoading] =useState('')
 
 	const getPokemons = (async () => {
@@ -22,19 +22,19 @@ const Pokedex = (team, setTeam) => {
 
 	const checkNFetch = (async () => {
 
-		if (!fetchedPokemons.some(p => p.id === selected)) {
+		if (!PokemonsCache.some(p => p.id === selected)) {
 			console.log('fetching info for', selected)
 			setLoading('-loading')
 			const response = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${selected}/`)
 			const data = await response.json()
-			let newEntry = [...fetchedPokemons]
+			let newEntry = [...PokemonsCache]
 			newEntry.push(data)
-			setFetchedPokemons(newEntry)
+			setPokemonsCache(newEntry)
 		}
 		else getPokemonInfo()
 	})
 	const getPokemonInfo = () => {
-		const foundPokemon = fetchedPokemons.find((pokemon => pokemon.id === selected))
+		const foundPokemon = PokemonsCache.find((pokemon => pokemon.id === selected))
 		foundPokemon? console.log('found', foundPokemon.name): console.log('could not find pokemon');
 		setPokemonInfo(foundPokemon)
 	}
@@ -46,8 +46,8 @@ const Pokedex = (team, setTeam) => {
 	}, [selected])
 
 	useEffect(() => {
-		if (fetchedPokemons.length > 0) getPokemonInfo()  + setLoading('')
-	}, [fetchedPokemons])
+		if (PokemonsCache.length > 0) getPokemonInfo()  + setLoading('')
+	}, [PokemonsCache])
 
 	return (
 		<PokemonsContext.Provider value={context}>
