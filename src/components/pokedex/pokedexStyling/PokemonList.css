@@ -1,4 +1,4 @@
-ul {
+#pokemon-list {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     padding: 0;
@@ -6,7 +6,15 @@ ul {
     list-style-type: none;
 }
 
-li {
+#pokemon-list-item>*,
+#pokemon-list-item-selected>* {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    display: inline;
+}
+
+#pokemon-list-item {
     background-color: #6e86886e;
     position: relative;
     margin: 1em 0.5em;
@@ -16,12 +24,18 @@ li {
     height: 5em;
 }
 
-#selected {
+#pokemon-list-item-selected {
     background-color: #ffffff;
     box-shadow: 0em 0em 0.2em 0.3em #000000;
+    position: relative;
+    margin: 1em 0.5em;
+    padding: 0.2em;
+    border: 0.2em inset rgb(174, 189, 193, 0.5);
+    border-radius: 10em;
+    height: 5em;
 }
 
-li:hover {
+#pokemon-list-item:hover {
     background-color: #97bbbf6e;
     border: 0.2em outset rgba(174, 189, 193, 0.5);
     cursor: pointer;
@@ -29,7 +43,6 @@ li:hover {
 }
 
 #li-shadow {
-    position: absolute;
     left: 0px;
     top: 0px;
     right: 0px;
@@ -38,15 +51,8 @@ li:hover {
     box-shadow: inset 0.6em 0.6em 0.9em 0.6em #27282b;
 }
 
-li:hover #li-shadow {
+#pokemon-list-item:hover #li-shadow {
     display: none;
-}
-
-li>* {
-    margin: 0;
-    padding: 0;
-    position: absolute;
-    display: inline;
 }
 
 #pokeball {
@@ -74,6 +80,7 @@ li>* {
 #inTeam {
     color: #ffffff;
     top: 80%;
+    filter: drop-shadow(0em 0em 0.3em #000000);
 }
 
 #item-icon {

@@ -1,4 +1,4 @@
-p {
+#search-label {
     position: absolute;
     margin: 0;
     padding: 0;
@@ -7,7 +7,7 @@ p {
     right: 15.5em;
 }
 
-input {
+#search-input {
     font-family: 'Press Start 2P', cursive;
     color: white;
     background-color: #6e8688;

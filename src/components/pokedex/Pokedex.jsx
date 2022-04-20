@@ -3,6 +3,7 @@ import PokemonList from './PokemonList';
 import './Pokedex.css'
 import Pokeball from '../images/Pokeball.svg'
 import SearchBar from './SearchBar';
+import { idOf } from '../Helper';
 
 const Pokedex = ({ team, setTeam, pokemons, setPokemons }) => {
 	const [selected, setSelected] = useState()
@@ -50,14 +51,14 @@ const Pokedex = ({ team, setTeam, pokemons, setPokemons }) => {
 	}, [PokemonInfoCache])
 
 	const toggleTeamMember = () => {
-		if (team.filter(member => member === selected).length==0 && team.length < 6) {
+		if (team.filter(member => member.id === pokemonInfo.id).length==0 && team.length < 6) {
 			let newTeam = [...team]
-			newTeam.push(selected)
+			newTeam.push({id: pokemonInfo.id, name: pokemonInfo.name})
 			setTeam(newTeam)
 			console.log('added to team');
 		}
-		else if (!team.filter(member => member === selected).length==0){
-			let newTeam = team.filter(member => member !== selected)
+		else if (!team.filter(member => member.id === pokemonInfo.id).length==0){
+			let newTeam = team.filter(member => member.id !== pokemonInfo.id)
 			setTeam(newTeam)
 			console.log('removed from team');
 		}
@@ -70,7 +71,7 @@ const Pokedex = ({ team, setTeam, pokemons, setPokemons }) => {
 				{<p id='info-name' className='name'>Name: {pokemonInfo ? pokemonInfo.name : ''} <br /> Number: {pokemonInfo ? pokemonInfo.id : ''}</p>}
 				<img className={'shadow' + loading} src={pokemonInfo ? `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokemonInfo.id}.png` : Pokeball} alt="pokemon" />
 				<img className={'image' + loading} src={pokemonInfo ? `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokemonInfo.id}.png` : Pokeball} alt="pokemonShadow" />
-				<button className='team-btn' onClick={toggleTeamMember} > {team.filter(member => member === selected).length ===0 ? 'ADD TO TEAM' : 'REMOVE FROM TEAM'}</button>
+				<button className='team-btn' onClick={toggleTeamMember} > { pokemonInfo? team.filter(member => member.id === pokemonInfo.id).length ===0 ? 'ADD TO TEAM' : 'REMOVE FROM TEAM': 'PLEASE SELECT A POKEMON'}</button>
 			</div>
 
 			<div id='info'>info</div>

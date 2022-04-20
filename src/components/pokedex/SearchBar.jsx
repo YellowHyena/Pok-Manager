@@ -2,8 +2,8 @@ import './pokedexStyling/SearchBar.css'
 const SearchBar = ({setKeyword}) => {
 	return (
 		<div>
-			<p>SEARCH</p>
-			<input type="text" onChange={(e)=> setKeyword(e.target.value.toLowerCase())}/>
+			<label id='search-label' >SEARCH</label>
+			<input id='search-input' type="text" onChange={(e)=> setKeyword(e.target.value.toLowerCase())}/>
 		</div>
 	);
 }

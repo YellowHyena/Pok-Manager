@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, NavLink, Routes, Route } from 'react-router-dom'
-import { useState, useContext } from 'react'
+import { useState} from 'react'
 import Home from './components/home/Home'
 import Pokedex from './components/pokedex/Pokedex'
 import Team from './components/team/Team'
@@ -9,7 +9,7 @@ import './App.css'
 
 function App() {
 
-  const [team, setTeam] = useState([{id: 0, name: ''}])
+  const [team, setTeam] = useState([])
   const [pokemons, setPokemons] = useState([])
   const context = { pokemons }
 
