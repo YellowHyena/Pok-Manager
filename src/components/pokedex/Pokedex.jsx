@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import PokemonList from './PokemonList';
-import './Pokedex.css'
+import './pokedexStyling/Pokedex.css'
 import SearchBar from './SearchBar';
 import PokemonInfo from './PokemonInfo';
 
