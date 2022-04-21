@@ -1,24 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 body {
     margin: 0;
 }
 
 header {
-    background-color: rgb(225, 177, 135);
+    position: relative;
+    background: linear-gradient(180deg, #20202e, #b3b497 10em, #f3f7dc 20em, #4c4c61);
     height: 7vh;
     text-align: center;
     padding: 0;
     margin: 0;
+    box-shadow: inset 0 0 1em 1em #20202e;
 }
 
 .nav-link {
-    background-color: aquamarine;
-    border-radius: 0em, 0em, 1em, 0em;
+    background-color: transparent;
+    position: relative;
+    top: 1em;
+    padding: 1em;
     text-decoration: none;
-    font-family: consolas;
+    color: #e5a969;
+    margin: 2em;
+    font-family: 'Press Start 2P', cursive;
 }
 
 .nav-link:hover {
-    background-color: rgb(101, 101, 144);
+    color: #ffdbb5;
 }
 
 #router-div {

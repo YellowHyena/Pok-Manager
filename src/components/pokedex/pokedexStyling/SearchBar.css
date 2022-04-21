@@ -1,3 +1,22 @@
+#search-bar {
+    grid-area: search-bar;
+    height: 2em;
+    position: relative;
+    background: repeating-linear-gradient(47deg, #4c4c61, #b3b497 10em, #f3f7dc 20em, #4c4c61);
+    box-shadow: 0em 1em 1em -0.6em #08090a;
+}
+
+#search-bar:after {
+    content: '';
+    height: 100%;
+    width: 100%;
+    top: 0;
+    position: absolute;
+    box-shadow: inset 1em 0em 0.3em -0.7em #161718dc;
+    pointer-events: none;
+    z-index: 2;
+}
+
 #search-label {
     position: absolute;
     margin: 0;

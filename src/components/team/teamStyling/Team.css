@@ -3,7 +3,7 @@
     position: relative;
     height: 93vh;
     background: radial-gradient(circle, rgb(226, 242, 251) 20%, #b0a690 50%, #1e1726);
-    box-shadow: inset 1vh 2vw 2vh 9vh #27282b;
+    box-shadow: inset 1vh 2vw 2vh 9vh #1e1f22;
     overflow: hidden;
 }
 
@@ -34,12 +34,25 @@
     left: 50%;
     height: 1.2em;
     margin-top: -0.6em;
-    top: 75%;
+    top: 76%;
     text-align: center;
     border: 0.2em inset rgb(174, 189, 193);
     border-radius: 10em;
     box-shadow: inset 0.6em 0.6em 0.9em 0.6em #27282b;
     text-transform: uppercase;
+}
+
+.ball:before {
+    content: "";
+    position: absolute;
+    top: 1%;
+    left: 5%;
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 0, #ffffff, #ffffff00 58%);
+    filter: blur(4em);
+    z-index: 2;
 }
 
 .ball {
@@ -54,25 +67,47 @@
     box-shadow: inset -1em -1em 1em 0.4em rgba(128, 121, 217, 0.349);
 }
 
+.middle {
+    background: radial-gradient(circle at 2em 2em, #bc6855, #6e4c9e);
+    width: 16.9em;
+    height: 7em;
+    position: absolute;
+    margin-left: -8.45em;
+    margin-top: -3.45em;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    box-shadow: inset 0 1em 0 0.5em #00000049;
+}
+
+.middle:after {
+    position: absolute;
+    content: '';
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    box-shadow: inset 0 -1em 0 0.5em #3c2f2f;
+    z-index: 9;
+}
+
+.ball:after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 6%;
+    left: 10%;
+    border-radius: 50%;
+    background: radial-gradient(circle at 45% 50%, #ffffff, #ffffff52 14%, #ffffff00 24%);
+    transform: translateX(-5.5em) translateY(-3.5em) skewX(-20deg);
+}
+
 .color {
     height: 100%;
     width: 100%;
     border-radius: 50%;
     box-shadow: inset 1em 1em 2em 1em rgba(244, 241, 180, 0.349);
     background: radial-gradient(circle at 2em 2em, #f6dda351 50%, #471a78b5);
-}
-
-.ball:before {
-    content: "";
-    position: absolute;
-    top: 1%;
-    left: 5%;
-    width: 90%;
-    height: 90%;
-    border-radius: 50%;
-    background: radial-gradient(circle at 50% 0, #ffffff, #ffffff00 58%);
-    filter: blur(4em);
-    z-index: 2;
 }
 
 .sprite {
@@ -109,41 +144,6 @@
     left: 50%;
     border-radius: 50%;
     overflow: hidden;
-}
-
-.inner-edge {
-    background: radial-gradient(circle at 2em 2em, #bc6855, #6e4c9e);
-    width: 16.9em;
-    height: 7em;
-    position: absolute;
-    margin-left: -8.45em;
-    margin-top: -3.45em;
-    top: 50%;
-    left: 50%;
-    border-radius: 50%;
-    box-shadow: inset 0 1em 0 0.5em #00000049;
-}
-
-.inner-edge:before {
-    position: absolute;
-    content: '';
-    height: 100%;
-    width: 100%;
-    border-radius: 50%;
-    box-shadow: inset 0 -1em 0 0.5em #3c2f2f;
-    z-index: 2;
-}
-
-.ball:after {
-    content: "";
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 6%;
-    left: 10%;
-    border-radius: 50%;
-    background: radial-gradient(circle at 45% 50%, #ffffff, #ffffff52 14%, #ffffff00 24%);
-    transform: translateX(-5.5em) translateY(-3.5em) skewX(-20deg);
 }
 
 @keyframes hover {

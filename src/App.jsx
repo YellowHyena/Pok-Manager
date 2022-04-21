@@ -18,13 +18,13 @@ function App() {
       <Router>
         <div>
           <header>
-            <NavLink className={'nav-link'} to=""> Home </NavLink>
+            <NavLink className={'nav-link'} to="">Home</NavLink>
 
 
-            <NavLink className={'nav-link'} to="/pokedex"> Pokédex </NavLink>
+            <NavLink className={'nav-link'} to="/pokedex">Pokédex</NavLink>
 
 
-            <NavLink className={'nav-link'} to="/team"> Team </NavLink>
+            <NavLink className={'nav-link'} to="/team">Team</NavLink>
 
           </header>
           <main>

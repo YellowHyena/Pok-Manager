@@ -1,8 +1,30 @@
+#list {
+    grid-area: list;
+    overflow-y: scroll;
+    position: relative;
+    background: repeating-linear-gradient(180deg, #4c4c61, #b3b497 10em, #f3f7dc 20em, #4c4c61);
+    box-shadow: inset 1em 0em 0.3em -0.7em #20202e;
+}
+
+#list::-webkit-scrollbar {
+    width: 17px;
+}
+
+#list::-webkit-scrollbar-thumb {
+    background: linear-gradient(#f00000 40%, #000000, #f0f0f0 60%);
+    border-radius: 50%;
+    outline: 2px solid #000000;
+}
+
+#list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
 #pokemon-list {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     padding: 0;
-    margin: 0;
+    margin: 0 0.7em;
     list-style-type: none;
 }
 
@@ -81,6 +103,7 @@
     color: #ffffff;
     top: 80%;
     filter: drop-shadow(0em 0em 0.3em #000000);
+    pointer-events: none;
 }
 
 #item-icon {
