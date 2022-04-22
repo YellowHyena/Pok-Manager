@@ -1,12 +1,14 @@
 import './teamStyling/Team.css'
 const Team = ({ team, setTeam }) => {
 
+	//updates the nickname, duh
 	const updateNickname = (member, index) => e => {
 		let newTeam = [...team]
 		newTeam[index] = { id: member.id, name: e.target.value }
 		setTeam(newTeam)
 	}
 
+	//renders 6 balls, checks what teammembers there are and renders them inside ball. if no member is left empty balls render
 	const renderBalls = () => {
 		const balls = []
 		for (let i = 0; i < 6; i++) {

@@ -2,8 +2,9 @@ import './pokedexStyling/PokemonInfo.css'
 import Pokeball from '../images/Pokeball.svg'
 import { styledId } from '../Helper';
 
-const PokemonInfo = ({ pokemonInfo, loading, team, setTeam}) => {
+const PokemonInfo = ({ pokemonInfo, loading, team, setTeam }) => {
 
+	//if team isn't full; if pokemon isn't in team; add to team, else; remove from team
 	const toggleTeamMember = () => {
 		if (team.filter(member => member.id === pokemonInfo.id).length == 0 && team.length < 6) {
 			let newTeam = [...team]
@@ -24,7 +25,14 @@ const PokemonInfo = ({ pokemonInfo, loading, team, setTeam}) => {
 			<p id='info-name'>{pokemonInfo ? pokemonInfo.name : ''} <br /> {pokemonInfo ? 'No.' + styledId(pokemonInfo.id) : ''}</p>
 			<img className={'shadow' + loading} src={pokemonInfo ? pokemonInfo.sprites.other.home.front_default : Pokeball} alt="pokemon" />
 			<img className={'image' + loading} src={pokemonInfo ? pokemonInfo.sprites.other.home.front_default : Pokeball} alt="pokemonShadow" />
-			<button className='team-btn' onClick={toggleTeamMember} > {pokemonInfo ? team.filter(member => member.id === pokemonInfo.id).length === 0 ? 'ADD TO TEAM' : 'REMOVE FROM TEAM' : 'PLEASE SELECT A POKEMON'}</button>
+			<button className='team-btn' onClick={toggleTeamMember} > {
+				pokemonInfo ?
+					team.length !== 6 ?
+						team.filter(member => member.id === pokemonInfo.id).length === 0 ?
+							'ADD TO TEAM' :
+							'REMOVE FROM TEAM' :
+						'TEAM IS FULL' :
+					'PLEASE SELECT A POKEMON'}</button>
 		</div>);
 }
 

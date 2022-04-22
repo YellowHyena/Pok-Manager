@@ -25,20 +25,6 @@
     margin: 1em;
 }
 
-#info {
-    grid-area: info;
-    background: repeating-linear-gradient(180deg, #4c4c61, #b3b497 10em, #dcf1f7 20em, #4c4c61);
-    box-shadow: inset 0 0 0em 0.5em #20202e;
-}
-
-#info-abilities {
-    margin: 1em;
-    position: relative;
-    top: 0.5em;
-    padding: 0;
-    overflow-y: auto;
-}
-
 .team-btn {
     margin: 2%;
     font-family: 'Press Start 2P', cursive;

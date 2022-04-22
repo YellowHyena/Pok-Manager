@@ -6,7 +6,7 @@ const PokemonList = ({ team, selected, setSelected, pokemons, keyword }) => {
 	return (
 		<ul id ='pokemon-list'>
 			{pokemons.filter(pokemon => pokemon.name.includes(keyword)).map(pokemon =>
-				<li id= {`pokemon-list-item${idOf(pokemon) === selected ? '-selected' : ''}`} key={pokemon.name} onClick={() => setSelected(idOf(pokemon)) + console.log('selected', selected)}>
+				<li id= {`pokemon-list-item${idOf(pokemon) === selected ? '-selected' : ''}`} key={pokemon.name} onClick={() => setSelected(idOf(pokemon))}>
 					<img id='pokeball' src={Pokeball} alt="pokeball" />
 					<p id='item-id'>#{styledId(idOf(pokemon))} </p>
 					<p id='item-name' className='name'> {pokemon.name}</p>

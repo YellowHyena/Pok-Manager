@@ -11,6 +11,7 @@ const Pokedex = ({ team, setTeam, pokemons, setPokemons }) => {
 	const [PokemonInfoCache, setPokemonInfoCache] = useState([])
 	const [loading, setLoading] = useState('')
 
+	// fetches pokemon names and urls
 	const getPokemons = (async () => {
 		console.log('fetching pokemons')
 		const response = await fetch('https://pokeapi.co/api/v2/pokemon-species/?limit=20000')
@@ -19,33 +20,36 @@ const Pokedex = ({ team, setTeam, pokemons, setPokemons }) => {
 		setPokemons(data.results)
 	})
 
+	//if pokemon info has been fetched before; gets it, else; fetches and stores it in pokemonInfoCashe
 	const checkNFetch = (async () => {
-
 		if (!PokemonInfoCache.some(p => p.id === selected)) {
-			console.log('fetching info for', selected)
+			console.log('fetching info for id', selected)
 			setLoading('-loading')
 			const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${selected}/`)
 			const data = await response.json()
 			let newEntry = [...PokemonInfoCache]
 			newEntry.push(data)
-			console.log(data);
 			setPokemonInfoCache(newEntry)
 		}
 		else getPokemonInfo()
 	})
-
+	//fetches info of selected pokemon from cache
 	const getPokemonInfo = () => {
 		const foundPokemon = PokemonInfoCache.find((pokemon => pokemon.id === selected))
 		foundPokemon ? console.log('found', foundPokemon.name) : console.log('could not find pokemon');
 		setPokemonInfo(foundPokemon)
 	}
 
+	//fetches all pokemon once when rendered
 	useEffect(() => { if (pokemons.length == 0) getPokemons() }, [])
 
+	//if a pokemon is selected, check if info is fetched
 	useEffect(() => {
+		console.log('selected id', selected);
 		if (selected) checkNFetch()
 	}, [selected])
 
+	//if pokemonCashe was updated; get pokemon info
 	useEffect(() => {
 		if (PokemonInfoCache.length > 0) getPokemonInfo() + setLoading('')
 	}, [PokemonInfoCache])
@@ -61,11 +65,10 @@ const Pokedex = ({ team, setTeam, pokemons, setPokemons }) => {
 			<div id='info'>
 				<ul id='info-abilities'> ABILITIES:
 					{pokemonInfo ? pokemonInfo.abilities.map(index =>
-						<li>
+						<li key={index.ability.name}>
 							<p>{'-'+index.ability.name}</p>
 						</li>
 					) : null}
-
 				</ul>
 			</div>
 
